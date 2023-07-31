@@ -1,0 +1,17 @@
+package(
+    default_visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "_static_test",
+    hdrs = ["static_lib.h"],
+    srcs = ["static_lib.cc"],
+    copts = [
+        "-Werror",
+        "-Wextra"
+    ],
+    linkstatic = True,
+    deps = [
+        "//srcs/libs/common_lib:lib_common",
+    ]
+)

@@ -1,0 +1,32 @@
+# By default, we don't distinct target and host platfroms.
+build --distinct_host_configuration=false
+
+build --verbose_failures
+build --copt=-std=c++17
+build --copt=-fPIC
+build --copt=-D_GLIBCXX_USE_C99_MATH_TR1
+build --copt=-DMACE_OBFUSCATE_LITERALS
+build --copt=-DGEMMLOWP_USE_MACE_THREAD_POOL
+build --copt=-DGEMMLOWP_TEST_PROFILE
+build --copt=-DMACE_DEPTHWISE_U8_USE_MULTI_THREAD
+
+# Usage example: bazel build --config android
+build:android --define linux_base=true
+build:android --linkopt=-pie
+build:android --linkopt=-ldl
+build:android --linkopt=-llog
+build:android --linkopt=-lm
+build:android --distinct_host_configuration=true
+build:android --crosstool_top=//external:android/crosstool
+build:android --host_crosstool_top=@bazel_tools//tools/cpp:toolchain
+build:android --copt -Wall
+build:android --copt -Wno-mismatched-tags
+build:android --copt -Wno-missing-braces
+
+# Usage example: bazel build --config optimization
+build:optimization -c opt
+build:optimization --copt=-O3
+build:optimization --linkopt=-Wl,--strip-all
+build:optimization --copt=-ffunction-sections
+build:optimization --copt=-fdata-sections
+build:optimization --linkopt=-Wl,--gc-sections
