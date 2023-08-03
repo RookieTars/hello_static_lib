@@ -11,8 +11,8 @@ bazel_build() {
         --cpu=$ABI 
 
     mkdir -p ./build/$ABI/libs/
-    cp ./bazel-bin/$1/lib$2.a ./build/$ABI/libs/
+    cp ./bazel-bin/$1/lib$2.* ./build/$ABI/libs/
  }
 
-    $(bazel_build "srcs/libs/common_lib" "lib_common")
-    $(bazel_build "srcs/libs/static_lib" "_static_test")
+    $(bazel_build "srcs/libs/common_lib" "common_test")
+    $(bazel_build "srcs/libs/static_lib" "static_test")

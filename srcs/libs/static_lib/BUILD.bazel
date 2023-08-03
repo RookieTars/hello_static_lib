@@ -3,7 +3,7 @@ package(
 )
 
 cc_library(
-    name = "_static_test",
+    name = "static_test",
     hdrs = ["static_lib.h"],
     srcs = ["static_lib.cc"],
     copts = [
@@ -12,6 +12,6 @@ cc_library(
     ],
     linkstatic = True,
     deps = [
-        "//srcs/libs/common_lib:lib_common",
+        "//srcs/libs/common_lib:common_test",
     ]
 )
