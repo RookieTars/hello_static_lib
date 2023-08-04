@@ -3,12 +3,13 @@ package(
 )
 
 cc_library(
-    name = "lib_common",
+    name = "common_test",
     hdrs = ["common_lib.h"],
     srcs = ["common_lib.cc"],
     copts = [
         "-Werror",
         "-Wextra"
     ],
-    linkstatic = True
+    linkstatic = True,
+    alwayslink = True,
 )
